@@ -5,17 +5,12 @@ import br.com.alura.bytebank.modelo.Endereco
 import br.com.alura.bytebank.modelo.SistemaInterno
 
 fun main() {
-//    val endereco = Endereco(logradouro = "rua vergueiro", numero = 3185)
-//    val enderecoEmMaiusculo = "${endereco.logradouro}, ${endereco.numero}".toUpperCase()
-//    println(enderecoEmMaiusculo)
 
     Endereco(logradouro = "rua vergueiro", numero = 3185)
-    .let { endereco ->
-        "${endereco.logradouro}, ${endereco.numero}".toUpperCase()
-//    }.let { enderecoEmMaiusculo ->
-//            println(enderecoEmMaiusculo)
-    }.let (::println)
-
+        .apply {
+            "$logradouro, $numero".toUpperCase()
+        }.let(::println)
+   
     val enderecosComComplemento = listOf(Endereco(complemento = "casa"),
         Endereco(),
         Endereco(complemento = "apartamento"))
