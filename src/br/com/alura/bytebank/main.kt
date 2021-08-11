@@ -3,18 +3,22 @@ package br.com.alura.bytebank
 import br.com.alura.bytebank.modelo.Endereco
 
 fun main() {
-    val testeFuncao: () -> Unit
-    Endereco().let {
-        it
-    }
-    "".let(::testeRecebeString)
-    1.let {
-        it
-    }
-    teste (1, {})
+//    val endereco = Endereco(logradouro = "rua vergueiro", numero = 3185)
+//    val enderecoEmMaiusculo = "${endereco.logradouro}, ${endereco.numero}".toUpperCase()
+//    println(enderecoEmMaiusculo)
+
+    Endereco(logradouro = "rua vergueiro", numero = 3185)
+    .let { endereco ->
+        "${endereco.logradouro}, ${endereco.numero}".toUpperCase()
+//    }.let { enderecoEmMaiusculo ->
+//            println(enderecoEmMaiusculo)
+    }.let (::println)
+
+    val enderecosComComplemento = listOf(Endereco(complemento = "casa"),
+        Endereco(),
+        Endereco(complemento = "apartamento"))
+        .filter { endereco -> endereco.complemento.isNotEmpty() }
+        .let (::println )
+
 }
-fun testeRecebeString(valor: String) {
-}
-//higher order function
-fun teste(teste: Int, bloco: () -> Unit) {
-}
+
