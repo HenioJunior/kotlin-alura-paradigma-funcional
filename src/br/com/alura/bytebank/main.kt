@@ -6,17 +6,29 @@ import br.com.alura.bytebank.modelo.SistemaInterno
 
 fun main() {
 
-    Endereco(logradouro = "rua vergueiro", numero = 3185)
-        .run {
-            "$logradouro, $numero".toUpperCase()
-        }.let { enderecoEmMaiusculo: String ->
-            println(enderecoEmMaiusculo)
+    run {
+        println("execução do run sem extensão")
+    }
+    val endereco = Endereco()
+//        .also { println("Criando endereço") }
+        .apply {
+            logradouro = "rua vergueiro"
+            numero = 3185
         }
-    val enderecosComComplemento = listOf(Endereco(complemento = "casa"),
+
+    with(endereco) {
+        "$logradouro, $numero".toUpperCase()
+    }.let { enderecoEmMaiusculo: String ->
+        println(enderecoEmMaiusculo)
+    }
+
+    listOf(
+        Endereco(complemento = "casa"),
         Endereco(),
-        Endereco(complemento = "apartamento"))
-        .filter (predicate = { endereco -> endereco.complemento.isNotEmpty() })
-        .let (block = (::println ))
+        Endereco(complemento = "apartamento")
+    )
+        .filter(predicate = { endereco -> endereco.complemento.isNotEmpty() })
+        .let(block = (::println))
 
     soma(1, 5, resultado = (::println))
     println()
