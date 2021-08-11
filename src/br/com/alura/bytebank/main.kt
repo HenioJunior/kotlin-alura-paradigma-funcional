@@ -3,11 +3,28 @@ package br.com.alura.bytebank
 import br.com.alura.bytebank.teste.testaNullable
 
 fun main() {
-    val minhaFuncao = ::teste //:: - referencia
-    println(minhaFuncao())
+//    testaTipoFuncaoReferencia()
+//    testaFuncaoTipoClasse()
 
+    val minhaFuncaoLambda = {
+        println("Executa como lambda")
+    }
+    println(minhaFuncaoLambda())
+    println()
+    val minhaFuncaoAnonima: () -> Unit = fun(){
+        println("Executa como anonima")
+    }
+    println(minhaFuncaoAnonima())
+}
+
+fun testaFuncaoTipoClasse() {
     val minhaFuncaoClasse: () -> Unit = Teste()
     println(minhaFuncaoClasse())
+}
+
+fun testaTipoFuncaoReferencia() {
+    val minhaFuncao = ::teste //:: - referencia
+    println(minhaFuncao())
 }
 
 fun teste() {
